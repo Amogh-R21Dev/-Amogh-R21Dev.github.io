@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Amogh R Shetty | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #fdf6ec;
+    --amber: #d4700a;
+    --amber-light: #f5a94e;
+    --amber-dark: #a85508;
+    --brown: #3d1f00;
+    --warm-gray: #7a6652;
+    --card-bg: #fff8f0;
+    --border: #e8d5b7;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; width:100%; z-index:100;
+    background: rgba(253,246,236,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; align-items:center; justify-content:space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--amber-dark);
+    font-weight: 700;
+  }
+  .nav-links { display:flex; gap:30px; list-style:none; }
+  .nav-links a {
+    text-decoration:none; color:var(--warm-gray);
+    font-size:0.9rem; font-weight:600; letter-spacing:0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color:var(--amber); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items:center;
+    padding: 100px 80px 60px;
+    gap: 80px;
+  }
+  .hero-text { flex:1; }
+  .hero-tag {
+    display: inline-block;
+    background: var(--amber-light);
+    color: var(--brown);
+    font-size:0.78rem; font-weight:600;
+    letter-spacing:2px; text-transform:uppercase;
+    padding: 5px 14px; border-radius:20px;
+    margin-bottom:20px;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight:700; line-height:1.1;
+    color: var(--brown);
+    margin-bottom:16px;
+  }
+  .hero-name span { color: var(--amber); }
+  .hero-sub {
+    font-size:1.05rem; color:var(--warm-gray);
+    margin-bottom:10px; font-weight:400;
+  }
+  .hero-college {
+    font-size:0.92rem; color:var(--amber-dark);
+    font-weight:600; margin-bottom:28px;
+  }
+  .hero-desc {
+    font-size:0.97rem; color:var(--warm-gray);
+    max-width:520px; margin-bottom:36px; line-height:1.8;
+  }
+  .hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-primary {
+    background: var(--amber);
+    color:#fff; border:none; cursor:pointer;
+    padding:12px 28px; border-radius:6px;
+    font-size:0.9rem; font-weight:600;
+    text-decoration:none; display:inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background:var(--amber-dark); transform:translateY(-1px); }
+  .btn-outline {
+    border: 2px solid var(--amber);
+    color: var(--amber); background:transparent;
+    padding:11px 26px; border-radius:6px;
+    font-size:0.9rem; font-weight:600;
+    text-decoration:none; display:inline-block;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background:var(--amber); color:#fff; }
+
+  .hero-image { flex:0 0 300px; }
+  .hero-image img {
+    width:300px; height:360px;
+    object-fit:cover; border-radius:12px;
+    border: 4px solid var(--border);
+    box-shadow: 8px 8px 0 var(--amber-light);
+  }
+
+  /* SOCIALS */
+  .socials {
+    display:flex; gap:16px; margin-top:20px;
+  }
+  .social-link {
+    display:flex; align-items:center; gap:8px;
+    color: var(--warm-gray); text-decoration:none;
+    font-size:0.88rem; font-weight:600;
+    transition: color 0.2s;
+  }
+  .social-link:hover { color:var(--amber); }
+  .social-link svg { width:18px; height:18px; }
+
+  /* SECTION COMMON */
+  section { padding:80px 80px; }
+  .section-label {
+    font-size:0.78rem; font-weight:700;
+    letter-spacing:3px; text-transform:uppercase;
+    color: var(--amber); margin-bottom:10px;
+  }
+  .section-title {
+    font-family:'Playfair Display', serif;
+    font-size:2rem; font-weight:700;
+    color:var(--brown); margin-bottom:40px;
+  }
+  .divider {
+    width:48px; height:3px;
+    background:var(--amber-light);
+    margin:10px 0 40px;
+    border-radius:2px;
+  }
+
+  /* ABOUT */
+  #about { background: var(--card-bg); border-top:1px solid var(--border); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; }
+  .about-text p { color:var(--warm-gray); margin-bottom:16px; font-size:0.97rem; }
+  .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .stat-card {
+    background:#fff; border:1px solid var(--border);
+    border-radius:10px; padding:20px;
+    text-align:center;
+  }
+  .stat-num {
+    font-family:'Playfair Display', serif;
+    font-size:1.8rem; color:var(--amber); font-weight:700;
+  }
+  .stat-label { font-size:0.82rem; color:var(--warm-gray); margin-top:4px; }
+
+  /* EDUCATION */
+  #education { background:var(--cream); }
+  .edu-list { display:flex; flex-direction:column; gap:20px; }
+  .edu-card {
+    background:var(--card-bg); border:1px solid var(--border);
+    border-radius:10px; padding:24px 28px;
+    display:flex; justify-content:space-between; align-items:start;
+    border-left:4px solid var(--amber);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .edu-card:hover { transform:translateX(4px); box-shadow:2px 2px 12px rgba(212,112,10,0.1); }
+  .edu-inst { font-weight:700; font-size:1.02rem; color:var(--brown); margin-bottom:4px; }
+  .edu-deg { font-size:0.9rem; color:var(--warm-gray); font-style:italic; }
+  .edu-meta { text-align:right; }
+  .edu-year { font-size:0.88rem; color:var(--amber-dark); font-weight:600; }
+  .edu-grade { font-size:0.9rem; color:var(--warm-gray); margin-top:4px; }
+
+  /* PROJECTS */
+  #projects { background:var(--card-bg); border-top:1px solid var(--border); }
+  .projects-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .project-card {
+    background:#fff; border:1px solid var(--border);
+    border-radius:12px; padding:28px;
+    transition:transform 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(212,112,10,0.12); }
+  .project-icon {
+    width:44px; height:44px; border-radius:10px;
+    background:var(--amber-light); display:flex;
+    align-items:center; justify-content:center;
+    font-size:1.2rem; margin-bottom:16px;
+  }
+  .project-title { font-weight:700; font-size:1.05rem; color:var(--brown); margin-bottom:10px; }
+  .project-desc { font-size:0.91rem; color:var(--warm-gray); line-height:1.7; margin-bottom:16px; }
+  .project-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .tag {
+    background:rgba(212,112,10,0.08);
+    color:var(--amber-dark);
+    font-size:0.76rem; font-weight:600;
+    padding:3px 10px; border-radius:12px;
+    border:1px solid rgba(212,112,10,0.2);
+  }
+  .project-link {
+    font-size:0.85rem; color:var(--amber);
+    text-decoration:none; font-weight:600;
+    display:inline-flex; align-items:center; gap:4px;
+  }
+  .project-link:hover { color:var(--amber-dark); }
+  .wip-badge {
+    font-size:0.73rem; background:#fff3cd;
+    color:#856404; padding:2px 8px; border-radius:10px;
+    border:1px solid #ffc107; font-weight:600; margin-left:8px;
+  }
+
+  /* CERTIFICATIONS */
+  #certifications { background:var(--cream); }
+  .cert-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .cert-card {
+    background:var(--card-bg); border:1px solid var(--border);
+    border-radius:10px; padding:20px 22px;
+    transition:transform 0.2s;
+  }
+  .cert-card:hover { transform:translateY(-2px); }
+  .cert-org {
+    font-size:0.75rem; font-weight:700; letter-spacing:1.5px;
+    text-transform:uppercase; color:var(--amber); margin-bottom:6px;
+  }
+  .cert-name { font-size:0.92rem; font-weight:600; color:var(--brown); margin-bottom:6px; }
+  .cert-date { font-size:0.8rem; color:var(--warm-gray); }
+
+  /* CONTACT */
+  #contact { background:var(--card-bg); border-top:1px solid var(--border); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:60px; }
+  .contact-info p { color:var(--warm-gray); font-size:0.95rem; margin-bottom:28px; }
+  .contact-item {
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:16px; color:var(--warm-gray);
+    font-size:0.92rem;
+  }
+  .contact-item a { color:var(--warm-gray); text-decoration:none; }
+  .contact-item a:hover { color:var(--amber); }
+  .contact-item svg { width:20px; height:20px; color:var(--amber); flex-shrink:0; }
+
+  /* FORM */
+  .contact-form { display:flex; flex-direction:column; gap:16px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-group { display:flex; flex-direction:column; gap:6px; }
+  .form-group label { font-size:0.82rem; font-weight:600; color:var(--warm-gray); letter-spacing:0.5px; }
+  .form-group input, .form-group textarea {
+    background:#fff; border:1px solid var(--border);
+    border-radius:7px; padding:11px 14px;
+    font-size:0.92rem; font-family:inherit;
+    color:var(--brown); outline:none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color:var(--amber); }
+  .form-group textarea { resize:vertical; min-height:120px; }
+  .form-status { font-size:0.88rem; color:var(--amber-dark); font-weight:600; min-height:20px; }
+  .form-status.success { color:#2e7d32; }
+  .form-status.error { color:#c62828; }
+
+  /* FOOTER */
+  footer {
+    background:var(--brown); color:rgba(255,255,255,0.6);
+    text-align:center; padding:28px;
+    font-size:0.85rem;
+  }
+  footer span { color:var(--amber-light); }
+
+  /* RESPONSIVE */
+  @media(max-width:900px) {
+    nav { padding:0 20px; }
+    .nav-links { gap:16px; }
+    .hero { flex-direction:column-reverse; padding:100px 28px 60px; gap:40px; }
+    .hero-image { flex:0 0 auto; }
+    .hero-image img { width:220px; height:260px; }
+    section { padding:60px 28px; }
+    .about-grid, .projects-grid, .contact-grid { grid-template-columns:1fr; gap:30px; }
+    .cert-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media(max-width:600px) {
+    .nav-links { display:none; }
+    .form-row { grid-template-columns:1fr; }
+    .cert-grid { grid-template-columns:1fr; }
+    .edu-card { flex-direction:column; gap:8px; }
+    .edu-meta { text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Amogh R Shetty</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-tag">Open to Internships</div>
+    <h1 class="hero-name">Hi, I'm <span>Amogh</span>R Shetty</h1>
+    <p class="hero-sub">B.Tech — Information Science & Engineering</p>
+    <p class="hero-college">NMAM Institute of Technology, Nitte University &nbsp;·&nbsp; CGPA: 8.9</p>
+    <p class="hero-desc">
+      A second-year engineering student passionate about Machine Learning, Computer Vision, and Full-Stack Web Development. I build things that are not just functional, but meaningful.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+    <div class="socials">
+      <!-- Email -->
+      <a href="mailto:amoghshetty193@gmail.com" class="social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        amoghshetty193@gmail.com
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/Amogh-R21Dev" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/amogh-shetty-" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="myres.jpeg" alt="Amogh R Shetty"/>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">A bit about who I am</h2>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm Amogh R Shetty, a second-year B.Tech student in Information Science & Engineering at NMAM Institute of Technology, Nitte University. With a CGPA of 9.2, I've been consistent in academics while actively building real-world projects in AI and Machine Learning.</p>
+      <p>My work spans computer vision, predictive modelling, and web development. I believe in learning by building — every project I take up is an attempt to solve a real problem, not just write code.</p>
+      <p>Beyond tech, I serve as Event Coordinator at Vista Club, NMAMIT — which has sharpened my ability to lead, collaborate, and execute under pressure. I've also participated in the Smart India Hackathon and the Thales Hackathon, and recently completed a 3-day Agentic AI workshop by DLithe Consultancy Services.</p>
+      <p>I'm actively seeking internship opportunities in Software Engineering and AI/ML where I can grow, contribute, and build something that matters.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">9.2</div>
+        <div class="stat-label">Current CGPA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">ML Projects Built</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Hackathons</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Academic Background</h2>
+  <div class="divider"></div>
+  <div class="edu-list">
+    <div class="edu-card">
+      <div>
+        <div class="edu-inst">NMAM Institute of Technology, Nitte, Karkala</div>
+        <div class="edu-deg">B.Tech — Information Science & Engineering</div>
+      </div>
+      <div class="edu-meta">
+        <div class="edu-year">2024 – 2028</div>
+        <div class="edu-grade">CGPA: 9.2</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-inst">JSS PU College, Dharwad</div>
+        <div class="edu-deg">Pre-University Certificate · Karnataka State Board</div>
+      </div>
+      <div class="edu-meta">
+        <div class="edu-year">2022 – 2024</div>
+        <div class="edu-grade">Grade: 94%</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-inst">JSS Public School, Dharwad</div>
+        <div class="edu-deg">SSLC · CBSE Board</div>
+      </div>
+      <div class="edu-meta">
+        <div class="edu-year">– 2022</div>
+        <div class="edu-grade">Grade: 91.2%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="section-title">Things I've Built</h2>
+  <div class="divider"></div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-icon">👁️</div>
+      <div class="project-title">
+        Eye Movement & Facial Exercise Detection System
+        <span class="wip-badge">In Progress</span>
+      </div>
+      <p class="project-desc">
+        A real-time computer vision system that detects eye movements and facial exercises using facial landmark tracking. Built with MediaPipe FaceMesh (468 landmarks) and Eye Aspect Ratio (EAR) feature extraction. Designed for potential use in health monitoring and assistive technology.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">MediaPipe</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Computer Vision</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">⚙️</div>
+      <div class="project-title">Burr Prediction in Drilling Operations using ML</div>
+      <p class="project-desc">
+        An ML model to predict burr height in drilling operations — a critical manufacturing quality factor. Trained on experimental data using spindle speed, feed rate, drill diameter, and depth. Achieved an R² score of 0.98. Currently working on improving robustness across material types.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Random Forest</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Seaborn</span>
+      </div>
+      <a href="https://github.com/Amogh-R21Dev/Burr-prediction--using-ml" target="_blank" class="project-link">
+        View on GitHub →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Certifications</div>
+  <h2 class="section-title">Licences & Learning</h2>
+  <div class="divider"></div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-org">Microsoft</div>
+      <div class="cert-name">AI Innovation 2025 – Microsoft Azure</div>
+      <div class="cert-date">September 2025</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-org">Microsoft</div>
+      <div class="cert-name">AI Innovation 2025 – AI Learning Challenge</div>
+      <div class="cert-date">September 2025</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-org">Microsoft</div>
+      <div class="cert-name">AI Innovation 2025 – Applied AI Learning Challenge</div>
+      <div class="cert-date">September 2025</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-org">Microsoft</div>
+      <div class="cert-name">December Learning Challenge</div>
+      <div class="cert-date">December 2025</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-org">Microsoft</div>
+      <div class="cert-name">Copilot Learning Pathway</div>
+      <div class="cert-date">December 2025</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-org">Coursera · University of Michigan</div>
+      <div class="cert-name">Programming for Everybody (Getting Started with Python)</div>
+      <div class="cert-date">2025</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-org">DLithe · NMAMIT</div>
+      <div class="cert-name">Agentic AI Workshop — Certificate of Participation</div>
+      <div class="cert-date">March 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's Connect</h2>
+  <div class="divider"></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>I'm always open to internship opportunities, collaboration on interesting projects, or just a good conversation about AI and technology. Feel free to reach out!</p>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:amoghshetty193@gmail.com">amoghshetty193@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.84a16 16 0 006.29 6.29l1.37-1.37a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +91-9035576625
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <a href="https://github.com/Amogh-R21Dev" target="_blank">github.com/Amogh-R21Dev</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://www.linkedin.com/in/amogh-shetty-" target="_blank">linkedin.com/in/amogh-shetty-</a>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM using Formspree -->
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>YOUR NAME</label>
+          <input type="text" name="name" placeholder="John Doe" required/>
+        </div>
+        <div class="form-group">
+          <label>YOUR EMAIL</label>
+          <input type="email" name="email" placeholder="john@example.com" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>SUBJECT</label>
+        <input type="text" name="subject" placeholder="Internship Opportunity / Collaboration / Other"/>
+      </div>
+      <div class="form-group">
+        <label>MESSAGE</label>
+        <textarea name="message" placeholder="Hi Amogh, I wanted to reach out about..." required></textarea>
+      </div>
+      <div class="form-status" id="formStatus"></div>
+      <button type="submit" class="btn-primary" style="width:fit-content;">Send Message →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & built by <span>Amogh R Shetty</span> &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; All rights reserved</p>
+</footer>
+
+<script>
+  // Contact form using Formspree
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    status.textContent = 'Sending...';
+    status.className = 'form-status';
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://formspree.io/f/mlgogeqv', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        status.textContent = '✓ Message sent! I\'ll get back to you soon.';
+        status.className = 'form-status success';
+        form.reset();
+      } else {
+        throw new Error('Failed');
+      }
+    } catch(err) {
+      status.textContent = '✗ Something went wrong. Please email me directly at amoghshetty193@gmail.com';
+      status.className = 'form-status error';
+    }
+  });
+</script>
+
+</body>
+</html>
